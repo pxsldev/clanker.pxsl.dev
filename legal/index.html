@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="/static/styles.css">
 
-
     <style>
 
         .legal-page {
@@ -23,29 +22,20 @@
             padding: 100px 30px;
         }
 
-
         .legal-hero {
             text-align: center;
             margin-bottom: 80px;
         }
 
-
         .legal-badge {
             display: inline-block;
-
             padding: 8px 18px;
-
             border-radius: 999px;
-
             background: rgba(88, 101, 242, .15);
-
             border: 1px solid rgba(88, 101, 242, .35);
-
             color: #d8dcff;
-
             margin-bottom: 25px;
         }
-
 
         .legal-hero h1 {
             font-size: 70px;
@@ -53,9 +43,7 @@
             letter-spacing: -3px;
         }
 
-
         .legal-hero h1 span {
-
             background: linear-gradient(
                 90deg,
                 #5865f2,
@@ -67,18 +55,13 @@
 
             color: transparent;
             -webkit-text-fill-color: transparent;
-
         }
-
 
         .legal-hero p {
             margin-top: 20px;
-
             color: var(--muted);
-
             font-size: 20px;
         }
-
 
         .legal-card {
             background: linear-gradient(
@@ -88,77 +71,260 @@
             );
 
             border: 1px solid rgba(255,255,255,.08);
-
             border-radius: 26px;
-
             padding: 35px;
-
             margin-bottom: 25px;
-
             transition: .25s;
         }
 
-
         .legal-card:hover {
             border-color: rgba(88,101,242,.5);
-
             transform: translateY(-4px);
         }
 
-
         .legal-card h2 {
             font-size: 28px;
-
             margin-bottom: 20px;
-
             color: white;
         }
 
-
         .legal-card h3 {
             margin-top: 25px;
-
             margin-bottom: 10px;
-
             color: #7289ff;
         }
-
 
         .legal-card p,
         .legal-card li {
             color: var(--muted);
-
             line-height: 1.7;
-
             font-size: 15px;
         }
 
-
         .legal-card ul {
             margin-left: 20px;
-
             margin-top: 10px;
         }
 
-
         .legal-card a {
             color: #7289ff;
-
             text-decoration: none;
         }
-
 
         .legal-card a:hover {
             text-decoration: underline;
         }
 
-
         .last-updated {
             color: #777;
-
             font-size: 14px;
-
             margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           ANALYTICS CONSENT BANNER
+           ========================= */
+
+        .analytics-banner {
+            position: fixed;
+
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+
+            max-width: 900px;
+            margin: auto;
+
+            z-index: 99999;
+
+            background: rgba(15, 15, 28, .97);
+
+            border: 1px solid rgba(255,255,255,.12);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.45),
+                0 0 40px rgba(88,101,242,.08);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            padding: 22px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            opacity: 0;
+            transform: translateY(30px);
+
+            pointer-events: none;
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease;
+        }
+
+        .analytics-banner.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .analytics-content {
+            flex: 1;
+        }
+
+        .analytics-content h2 {
+            margin: 0 0 7px;
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .analytics-content p {
+            margin: 0;
+            color: #aaa;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .analytics-content a {
+            color: #7289ff;
+            text-decoration: none;
+        }
+
+        .analytics-content a:hover {
+            text-decoration: underline;
+        }
+
+        .analytics-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .analytics-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 11px 18px;
+
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .analytics-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .analytics-accept {
+            background: #5865f2;
+            color: white;
+        }
+
+        .analytics-accept:hover {
+            background: #4752c4;
+        }
+
+        .analytics-decline {
+            background: rgba(255,255,255,.08);
+            color: #ddd;
+
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .analytics-decline:hover {
+            background: rgba(255,255,255,.13);
+        }
+
+
+        /* =========================
+           ANALYTICS SETTINGS BUTTON
+           ========================= */
+
+        .analytics-settings {
+            position: fixed;
+
+            bottom: 15px;
+            left: 15px;
+
+            z-index: 9998;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: rgba(15,15,28,.85);
+
+            color: #aaa;
+
+            padding: 8px 12px;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+            font-size: 12px;
+
+            cursor: pointer;
+
+            opacity: .7;
+
+            transition: .2s;
+
+            display: none;
+        }
+
+        .analytics-settings:hover {
+            opacity: 1;
+            color: white;
+            background: rgba(88,101,242,.2);
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 700px) {
+
+            .legal-page {
+                padding: 70px 18px;
+            }
+
+            .legal-hero h1 {
+                font-size: 48px;
+            }
+
+            .analytics-banner {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+
+                padding: 18px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 16px;
+            }
+
+            .analytics-actions {
+                width: 100%;
+            }
+
+            .analytics-btn {
+                flex: 1;
+            }
+
         }
 
     </style>
@@ -166,11 +332,11 @@
 </head>
 
 
-
 <body>
 
 
 <div class="background"></div>
+
 
 <nav>
 
@@ -198,7 +364,9 @@
 
 </nav>
 
+
 <main class="legal-page">
+
 
     <section class="legal-hero">
 
@@ -220,6 +388,7 @@
 
     </section>
 
+
     <section class="legal-card">
 
         <h2>
@@ -234,6 +403,7 @@
             Clanker respects your privacy. This policy explains what data is stored,
             how it is used, and how analytics are handled.
         </p>
+
 
         <h3>
             What We Store
@@ -259,10 +429,12 @@
 
         </ul>
 
+
         <p>
             We do not collect personal information such as real names,
             passwords, or private messages.
         </p>
+
 
         <h3>
             How Data Is Used
@@ -273,14 +445,20 @@
             economy systems, server configuration, and statistics.
         </p>
 
+
         <h3>
             Website Analytics
         </h3>
 
         <p>
-            We use Google Analytics to understand how users interact with our website.
-            This may include information such as page views, session duration,
-            device type, browser type, and general usage patterns.
+            We use Google Analytics only if you give consent through the
+            analytics banner displayed on this website.
+        </p>
+
+        <p>
+            If you consent, Google Analytics may collect information such as
+            page views, session duration, device type, browser type, and
+            general usage patterns.
         </p>
 
         <p>
@@ -290,12 +468,27 @@
         </p>
 
         <p>
+            If you decline analytics, Google Analytics will not be enabled
+            through this website.
+        </p>
+
+        <p>
+            You can change your analytics preference at any time using the
+            <strong>Analytics Settings</strong> button.
+        </p>
+
+        <p>
             You can view Google's privacy policy here:
 
-            <a href="https://policies.google.com/privacy" target="_blank">
+            <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 Google Privacy Policy
             </a>
         </p>
+
 
         <h3>
             Clanker Telemetry
@@ -346,12 +539,14 @@
 
         </ul>
 
+
         <p>
             Clanker may temporarily store Discord user IDs in memory while
             calculating concurrent usage statistics. These IDs are not included
             in the publicly accessible telemetry data and are removed from the
             active-user tracker after a period of inactivity.
         </p>
+
 
         <p>
             Aggregate telemetry is published through Clanker's public statistics
@@ -360,10 +555,12 @@
             individual user activity.
         </p>
 
+
         <p>
             Telemetry is used to monitor Clanker's performance, understand
             general usage, identify problems, and improve the service.
         </p>
+
 
         <h3>
             Data Sharing
@@ -373,6 +570,7 @@
             We do not sell, rent, or share your data with third parties
             except where required by law.
         </p>
+
 
         <h3>
             Data Removal
@@ -400,7 +598,9 @@
 
     </section>
 
+
     <section class="legal-card">
+
         <h2>
             Terms of Service
         </h2>
@@ -409,6 +609,7 @@
             Last Updated: 30th March 2026
         </p>
 
+
         <h3>
             Usage
         </h3>
@@ -416,6 +617,7 @@
         <p>
             By using Clanker, you agree to use it responsibly.
         </p>
+
 
         <h3>
             Do Not Abuse The Bot
@@ -437,6 +639,7 @@
 
         </ul>
 
+
         <h3>
             Availability
         </h3>
@@ -446,6 +649,7 @@
             Downtime, bugs, or changes may happen at any time.
         </p>
 
+
         <h3>
             Restrictions
         </h3>
@@ -453,6 +657,7 @@
         <p>
             Access may be restricted if the bot is abused or exploited.
         </p>
+
 
         <h3>
             Liability
@@ -464,6 +669,7 @@
         </p>
 
     </section>
+
 
     <section class="legal-card">
 
@@ -489,6 +695,7 @@
 
     </section>
 
+
     <section class="legal-card">
 
         <h2>
@@ -508,7 +715,217 @@
 
     </section>
 
+
 </main>
+
+
+<!-- =========================
+     ANALYTICS CONSENT BANNER
+     ========================= -->
+
+<div
+    class="analytics-banner"
+    id="analytics-banner"
+    role="dialog"
+    aria-label="Analytics consent"
+    aria-describedby="analytics-description"
+>
+
+    <div class="analytics-content">
+
+        <h2>
+            📊 Can we use analytics?
+        </h2>
+
+        <p id="analytics-description">
+            We'd like to use Google Analytics to understand how people use
+            the Clanker website and improve it. Analytics is optional and
+            won't be enabled unless you accept.
+            <a href="/legal/">
+                Learn more
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="analytics-actions">
+
+        <button
+            class="analytics-btn analytics-decline"
+            id="analytics-decline"
+            type="button"
+        >
+            Decline
+        </button>
+
+        <button
+            class="analytics-btn analytics-accept"
+            id="analytics-accept"
+            type="button"
+        >
+            Accept
+        </button>
+
+    </div>
+
+</div>
+
+
+<button
+    class="analytics-settings"
+    id="analytics-settings"
+    type="button"
+>
+    ⚙ Analytics Settings
+</button>
+
+
+<script>
+
+(function () {
+
+    const ANALYTICS_ID = "G-J10Z1FWB4F";
+
+    const STORAGE_KEY = "clanker_analytics_consent";
+
+    const banner = document.getElementById("analytics-banner");
+
+    const acceptButton =
+        document.getElementById("analytics-accept");
+
+    const declineButton =
+        document.getElementById("analytics-decline");
+
+    const settingsButton =
+        document.getElementById("analytics-settings");
+
+
+    function loadGoogleAnalytics() {
+
+        if (window.__clankerAnalyticsLoaded) {
+            return;
+        }
+
+        window.__clankerAnalyticsLoaded = true;
+
+
+        const script = document.createElement("script");
+
+        script.async = true;
+
+        script.src =
+            "https://www.googletagmanager.com/gtag/js?id="
+            + ANALYTICS_ID;
+
+        document.head.appendChild(script);
+
+
+        window.dataLayer = window.dataLayer || [];
+
+
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+
+
+        window.gtag = gtag;
+
+
+        gtag("js", new Date());
+
+        gtag("config", ANALYTICS_ID);
+
+    }
+
+
+    function hideBanner() {
+
+        banner.classList.remove("active");
+
+        settingsButton.style.display = "block";
+
+    }
+
+
+    function showBanner() {
+
+        banner.classList.add("active");
+
+        settingsButton.style.display = "none";
+
+    }
+
+
+    function setConsent(value) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            value
+        );
+
+    }
+
+
+    acceptButton.addEventListener("click", function () {
+
+        setConsent("accepted");
+
+        loadGoogleAnalytics();
+
+        hideBanner();
+
+    });
+
+
+    declineButton.addEventListener("click", function () {
+
+        setConsent("declined");
+
+        hideBanner();
+
+    });
+
+
+    settingsButton.addEventListener("click", function () {
+
+        showBanner();
+
+    });
+
+
+    const consent =
+        localStorage.getItem(STORAGE_KEY);
+
+
+    if (consent === "accepted") {
+
+        loadGoogleAnalytics();
+
+        settingsButton.style.display = "block";
+
+    }
+
+    else if (consent === "declined") {
+
+        settingsButton.style.display = "block";
+
+    }
+
+    else {
+
+        setTimeout(function () {
+
+            showBanner();
+
+        }, 300);
+
+    }
+
+})();
+
+</script>
+
 
 </body>
 

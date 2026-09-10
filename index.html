@@ -21,7 +21,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="/static/styles.css">
 
@@ -68,24 +71,220 @@
     }
     </script>
 
+
+    <!-- Analytics Consent Banner -->
+
+    <style>
+
+        .analytics-banner {
+            position: fixed;
+
+            left: 50%;
+            bottom: 24px;
+
+            transform: translate(-50%, 140%);
+
+            width: min(680px, calc(100% - 32px));
+
+            z-index: 99999;
+
+            background: rgba(25, 25, 35, 0.95);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(88, 101, 242, 0.12);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            opacity: 0;
+
+            transition:
+                transform 0.5s cubic-bezier(.16, 1, .3, 1),
+                opacity 0.3s ease;
+        }
+
+
+        .analytics-banner.show {
+            transform: translate(-50%, 0);
+
+            opacity: 1;
+        }
+
+
+        .analytics-content {
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding: 18px;
+        }
+
+
+        .analytics-icon {
+            flex: 0 0 42px;
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(88, 101, 242, 0.14);
+
+            border: 1px solid rgba(88, 101, 242, 0.25);
+
+            border-radius: 12px;
+
+            font-size: 19px;
+        }
+
+
+        .analytics-text {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .analytics-text strong {
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #fff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        .analytics-text p {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.65);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .analytics-actions {
+            display: flex;
+
+            flex-shrink: 0;
+
+            gap: 8px;
+        }
+
+
+        .analytics-btn {
+            border: 0;
+
+            border-radius: 10px;
+
+            padding: 9px 13px;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .analytics-btn:hover {
+            transform: translateY(-1px);
+        }
+
+
+        .analytics-btn.decline {
+            color: rgba(255, 255, 255, 0.7);
+
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+
+        .analytics-btn.decline:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+
+        .analytics-btn.accept {
+            color: #fff;
+
+            background: #5865F2;
+        }
+
+
+        .analytics-btn.accept:hover {
+            background: #6875ff;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .analytics-content {
+                align-items: flex-start;
+
+                flex-wrap: wrap;
+            }
+
+
+            .analytics-icon {
+                flex: 0 0 38px;
+
+                width: 38px;
+                height: 38px;
+            }
+
+
+            .analytics-text {
+                flex: 1;
+            }
+
+
+            .analytics-actions {
+                width: 100%;
+
+                margin-top: 2px;
+            }
+
+
+            .analytics-btn {
+                flex: 1;
+
+                padding: 10px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J10Z1FWB4F"></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-J10Z1FWB4F");
-</script>
 
 <body>
 
+
 <div class="background"></div>
+
 
 <nav>
 
@@ -103,7 +302,11 @@
             Legal
         </a>
 
-        <a href="https://pxsl.dev/discord/" target="_blank">
+        <a
+            href="https://pxsl.dev/discord/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             Community
         </a>
 
@@ -111,12 +314,13 @@
 
 </nav>
 
+
 <section class="hero">
 
     <div class="hero-left">
 
         <div class="badge">
-            ✨ Trusted by <span id="badge-user-count">...</span> users      
+            ✨ Trusted by <span id="badge-user-count">...</span> users
         </div>
 
         <h1>
@@ -134,13 +338,18 @@
 
         <div class="buttons">
 
-            <a class="btn primary"
-               href="/invite/">
+            <a
+                class="btn primary"
+                href="/invite/"
+            >
                 Invite Clanker →
             </a>
 
 
-            <a class="btn secondary" href="/commands/">
+            <a
+                class="btn secondary"
+                href="/commands/"
+            >
                 Explore Commands
             </a>
 
@@ -172,6 +381,7 @@
 
     </div>
 
+
     <div class="discord-preview">
 
         <div class="discord-header">
@@ -185,6 +395,7 @@
 
         </div>
 
+
         <div class="message">
 
             <img src="/assets/clanker.png">
@@ -196,6 +407,7 @@
 
         </div>
 
+
         <div class="message">
 
             <img src="/assets/clanker.png">
@@ -206,6 +418,7 @@
             </div>
 
         </div>
+
 
         <div class="message">
 
@@ -222,74 +435,116 @@
 
 </section>
 
+
 <section class="features">
 
     <h2>
         Everything your server needs
     </h2>
 
+
     <div class="grid">
 
         <div class="card">
+
             <span>💰</span>
+
             <h3>Economy</h3>
+
             <p>
                 Work, gamble, collect coins and compete with your friends.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <span>😂</span>
+
             <h3>Entertainment</h3>
+
             <p>
                 Memes, jokes, games and random chaos.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <span>🎨</span>
+
             <h3>Image Tools</h3>
+
             <p>
                 Create ridiculous edits directly inside Discord.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <span>👥</span>
+
             <h3>Social</h3>
+
             <p>
                 Roast friends, compliment people and interact.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <span>⚡</span>
+
             <h3>Fast & Reliable</h3>
+
             <p>
                 Built to handle thousands of communities.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <span>🆓</span>
+
             <h3>Always Free</h3>
+
             <p>
                 No premium walls. No locked commands.
             </p>
+
         </div>
+
     </div>
 
 </section>
+
 
 <section class="github-section">
 
     <div class="github-card">
 
         <div class="github-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.93 10.93 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path
+                    fill="currentColor"
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.93 10.93 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"
+                />
             </svg>
+
         </div>
+
 
         <div class="github-content">
 
@@ -322,19 +577,25 @@
 
 </section>
 
+
 <section class="reviews">
 
     <h2>
         Loved by communities
     </h2>
 
+
     <div class="reviews-row-wrap">
 
-        <div class="reviews-row" id="reviewsRow"></div>
+        <div
+            class="reviews-row"
+            id="reviewsRow"
+        ></div>
 
     </div>
 
 </section>
+
 
 <footer>
 
@@ -344,106 +605,481 @@
 
 </footer>
 
+
+<!-- Analytics Consent Banner -->
+
+<div
+    id="analyticsBanner"
+    class="analytics-banner"
+>
+
+    <div class="analytics-content">
+
+
+        <div class="analytics-icon">
+            📊
+        </div>
+
+
+        <div class="analytics-text">
+
+            <strong>
+                Can I use analytics?
+            </strong>
+
+            <p>
+                I'd like to use Google Analytics to understand how people
+                use Clanker and improve the website. No Google Analytics
+                tracking will be loaded unless you agree.
+            </p>
+
+        </div>
+
+
+        <div class="analytics-actions">
+
+            <button
+                id="analyticsDecline"
+                class="analytics-btn decline"
+                type="button"
+            >
+                No thanks
+            </button>
+
+
+            <button
+                id="analyticsAccept"
+                class="analytics-btn accept"
+                type="button"
+            >
+                I'm okay with it
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
+
+    /*
+     * ============================================
+     * Google Analytics Consent
+     * ============================================
+     *
+     * IMPORTANT:
+     *
+     * Google Analytics is NOT loaded when the page
+     * initially opens.
+     *
+     * It is only loaded after explicit consent.
+     *
+     * This uses a Clanker-specific localStorage key
+     * because clanker.pxsl.dev is a separate origin
+     * from pxsl.dev.
+     */
+
+
+    const ANALYTICS_ID =
+        "G-J10Z1FWB4F";
+
+
+    const ANALYTICS_CONSENT_KEY =
+        "clanker-analytics-consent";
+
+
+    const analyticsBanner =
+        document.getElementById("analyticsBanner");
+
+
+    const analyticsAccept =
+        document.getElementById("analyticsAccept");
+
+
+    const analyticsDecline =
+        document.getElementById("analyticsDecline");
+
+
+    /*
+     * Load Google Analytics.
+     */
+
+    function enableAnalytics() {
+
+        /*
+         * Safety check:
+         * never load Analytics without consent.
+         */
+
+        if (
+            localStorage.getItem(ANALYTICS_CONSENT_KEY)
+            !== "accepted"
+        ) {
+            return;
+        }
+
+
+        /*
+         * Prevent duplicate loading.
+         */
+
+        if (
+            document.querySelector(
+                'script[src*="googletagmanager.com/gtag/js"]'
+            )
+        ) {
+            return;
+        }
+
+
+        /*
+         * Load Google's gtag.js script.
+         */
+
+        const script =
+            document.createElement("script");
+
+
+        script.async = true;
+
+
+        script.src =
+            "https://www.googletagmanager.com/gtag/js?id="
+            + ANALYTICS_ID;
+
+
+        document.head.appendChild(script);
+
+
+        /*
+         * Initialise Google Analytics.
+         */
+
+        window.dataLayer =
+            window.dataLayer || [];
+
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+
+        window.gtag = gtag;
+
+
+        gtag(
+            "js",
+            new Date()
+        );
+
+
+        gtag(
+            "config",
+            ANALYTICS_ID
+        );
+
+    }
+
+
+    /*
+     * Read the visitor's previous choice.
+     */
+
+    const analyticsConsent =
+        localStorage.getItem(
+            ANALYTICS_CONSENT_KEY
+        );
+
+
+    /*
+     * If the visitor already accepted,
+     * load Analytics without showing the banner.
+     */
+
+    if (
+        analyticsConsent === "accepted"
+    ) {
+
+        enableAnalytics();
+
+    }
+
+
+    /*
+     * If they have never made a choice,
+     * show the banner.
+     */
+
+    else if (
+        !analyticsConsent
+    ) {
+
+        setTimeout(() => {
+
+            analyticsBanner.classList.add("show");
+
+        }, 800);
+
+    }
+
+
+    /*
+     * Accept Analytics.
+     */
+
+    analyticsAccept.addEventListener(
+        "click",
+        () => {
+
+            localStorage.setItem(
+                ANALYTICS_CONSENT_KEY,
+                "accepted"
+            );
+
+
+            analyticsBanner.classList.remove(
+                "show"
+            );
+
+
+            enableAnalytics();
+
+        }
+    );
+
+
+    /*
+     * Decline Analytics.
+     */
+
+    analyticsDecline.addEventListener(
+        "click",
+        () => {
+
+            localStorage.setItem(
+                ANALYTICS_CONSENT_KEY,
+                "declined"
+            );
+
+
+            analyticsBanner.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+</script>
+
+
+<script>
+
     async function loadStats() {
+
         try {
+
             const response = await fetch(
                 "https://api.pxsl.dev/stats.json"
             );
 
+
             if (!response.ok) {
-                throw new Error("Failed to load stats.json");
+
+                throw new Error(
+                    "Failed to load stats.json"
+                );
+
             }
 
-            const stats = await response.json();
 
-            const userCount = document.getElementById("user-count");
-            const serverCount = document.getElementById("server-count");
-            const badgeUserCount = document.getElementById("badge-user-count");
+            const stats =
+                await response.json();
 
-            const users = Number(stats.users);
-            const servers = Number(stats.guilds);
 
-            const formattedUsers = users.toLocaleString();
-            const formattedServers = servers.toLocaleString();
+            const userCount =
+                document.getElementById(
+                    "user-count"
+                );
+
+
+            const serverCount =
+                document.getElementById(
+                    "server-count"
+                );
+
+
+            const badgeUserCount =
+                document.getElementById(
+                    "badge-user-count"
+                );
+
+
+            const users =
+                Number(stats.users);
+
+
+            const servers =
+                Number(stats.guilds);
+
+
+            const formattedUsers =
+                users.toLocaleString();
+
+
+            const formattedServers =
+                servers.toLocaleString();
+
 
             if (userCount) {
-                userCount.textContent = formattedUsers;
+
+                userCount.textContent =
+                    formattedUsers;
+
             }
+
 
             if (serverCount) {
-                serverCount.textContent = formattedServers;
+
+                serverCount.textContent =
+                    formattedServers;
+
             }
 
+
             if (badgeUserCount) {
-                badgeUserCount.textContent = formattedUsers;
+
+                badgeUserCount.textContent =
+                    formattedUsers;
+
             }
 
         } catch (error) {
+
             console.error(
                 "[STATS] Failed to load statistics:",
                 error
             );
 
-            const userCount = document.getElementById("user-count");
-            const serverCount = document.getElementById("server-count");
-            const badgeUserCount = document.getElementById("badge-user-count");
+
+            const userCount =
+                document.getElementById(
+                    "user-count"
+                );
+
+
+            const serverCount =
+                document.getElementById(
+                    "server-count"
+                );
+
+
+            const badgeUserCount =
+                document.getElementById(
+                    "badge-user-count"
+                );
+
 
             if (userCount) {
+
                 userCount.textContent = "-";
+
             }
+
 
             if (serverCount) {
+
                 serverCount.textContent = "-";
+
             }
 
+
             if (badgeUserCount) {
+
                 badgeUserCount.textContent = "-";
+
             }
+
         }
+
     }
 
 
     async function loadCommandCount() {
+
         try {
+
             const response = await fetch(
                 "https://api.pxsl.dev/commands.json"
             );
 
+
             if (!response.ok) {
-                throw new Error("Failed to load command data");
+
+                throw new Error(
+                    "Failed to load command data"
+                );
+
             }
 
-            const commands = await response.json();
 
-            const commandCount = document.getElementById("command-count");
+            const commands =
+                await response.json();
+
+
+            const commandCount =
+                document.getElementById(
+                    "command-count"
+                );
+
 
             if (commandCount) {
-                commandCount.textContent = commands.length.toLocaleString();
+
+                commandCount.textContent =
+                    commands.length.toLocaleString();
+
             }
 
         } catch (error) {
+
             console.error(
                 "[COMMANDS] Failed to load command data:",
                 error
             );
 
-            const commandCount = document.getElementById(
-                "command-count"
-            );
+
+            const commandCount =
+                document.getElementById(
+                    "command-count"
+                );
+
 
             if (commandCount) {
+
                 commandCount.textContent = "-";
+
             }
+
         }
+
     }
 
 
     loadStats();
+
     loadCommandCount();
+
 </script>
 
-<script src="/static/script.js" defer></script>
+
+<script
+    src="/static/script.js"
+    defer
+></script>
+
 
 </body>
 
