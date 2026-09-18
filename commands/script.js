@@ -168,7 +168,7 @@ search.addEventListener("input", () => {
   render(filtered);
 });
 
-fetch("https://api.pxsl.dev/commands.json")
+fetch("https://api.pxsl.dev/clanker/commands.json")
   .then(response => {
     if (!response.ok) {
       throw new Error(
