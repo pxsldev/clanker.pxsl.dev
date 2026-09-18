@@ -1,29 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://discord.com/oauth2/authorize?client_id=1482397035909873865">
+
     <title>Redirecting...</title>
 
-    <script>
-        window.location.replace("https://discord.com/oauth2/authorize?client_id=1482397035909873865");
-    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #0d0d18;
+            color: #fff;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .redirect-message {
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Analytics banner */
+
+        .analytics-banner {
+            position: fixed;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+
+            padding: 20px 24px;
+
+            background: rgba(21, 21, 38, 0.97);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            animation: bannerIn 0.35s ease;
+        }
+
+        .analytics-content {
+            flex: 1;
+        }
+
+        .analytics-content h2 {
+            margin: 0 0 7px;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .analytics-content p {
+            margin: 0;
+
+            color: #aaaabd;
+
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .analytics-content a {
+            color: #7289ff;
+            text-decoration: none;
+        }
+
+        .analytics-content a:hover {
+            text-decoration: underline;
+        }
+
+        .analytics-buttons {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .analytics-buttons button {
+            border: none;
+            border-radius: 10px;
+
+            padding: 11px 17px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                opacity 0.15s ease;
+        }
+
+        .analytics-buttons button:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .analytics-deny {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .analytics-allow {
+            background: #5865f2;
+            color: #fff;
+        }
+
+        @keyframes bannerIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .analytics-banner {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 15px;
+            }
+
+            .analytics-buttons {
+                width: 100%;
+            }
+
+            .analytics-buttons button {
+                flex: 1;
+            }
+        }
+    </style>
 </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J10Z1FWB4F"></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-J10Z1FWB4F");
-</script>
-
 <body>
-    <p>Redirecting...</p>
+
+    <div class="redirect-message">
+        <p id="redirect-text">Please choose your analytics preference...</p>
+    </div>
+
+
+    <!-- Analytics consent banner -->
+
+    <div class="analytics-banner" id="analytics-banner">
+
+        <div class="analytics-content">
+
+            <h2>📊 Can I use analytics?</h2>
+
+            <p>
+                Clanker uses Google Analytics to understand how people use
+                the website, such as page views, device type, and general
+                usage statistics. This helps us improve the website.
+                Analytics are optional.
+            </p>
+
+            <p style="margin-top: 7px;">
+                You can read more in our
+                <a href="/legal/" target="_blank">
+                    Privacy Policy
+                </a>.
+            </p>
+
+        </div>
+
+        <div class="analytics-buttons">
+
+            <button
+                class="analytics-deny"
+                id="analytics-deny"
+                type="button"
+            >
+                Decline
+            </button>
+
+            <button
+                class="analytics-allow"
+                id="analytics-allow"
+                type="button"
+            >
+                Allow Analytics
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const ANALYTICS_ID = "G-J10Z1FWB4F";
+
+        const REDIRECT_URL =
+            "https://discord.com/oauth2/authorize?client_id=1482397035909873865";
+
+        const banner =
+            document.getElementById("analytics-banner");
+
+        const allowButton =
+            document.getElementById("analytics-allow");
+
+        const denyButton =
+            document.getElementById("analytics-deny");
+
+        const redirectText =
+            document.getElementById("redirect-text");
+
+
+        /*
+         * Load Google Analytics only after
+         * the user has explicitly allowed it.
+         */
+
+        function enableAnalytics() {
+
+            const script =
+                document.createElement("script");
+
+            script.async = true;
+
+            script.src =
+                "https://www.googletagmanager.com/gtag/js?id=" +
+                ANALYTICS_ID;
+
+            document.head.appendChild(script);
+
+
+            window.dataLayer =
+                window.dataLayer || [];
+
+            window.gtag = function () {
+                window.dataLayer.push(arguments);
+            };
+
+
+            window.gtag(
+                "js",
+                new Date()
+            );
+
+            window.gtag(
+                "config",
+                ANALYTICS_ID
+            );
+        }
+
+
+        /*
+         * Continue to Discord.
+         */
+
+        function redirectToDiscord() {
+
+            banner.style.display = "none";
+
+            redirectText.textContent =
+                "Redirecting to Discord...";
+
+            window.location.replace(
+                REDIRECT_URL
+            );
+        }
+
+
+        /*
+         * Allow analytics.
+         */
+
+        allowButton.addEventListener(
+            "click",
+            function () {
+
+                localStorage.setItem(
+                    "analytics-consent",
+                    "accepted"
+                );
+
+                enableAnalytics();
+
+                redirectToDiscord();
+            }
+        );
+
+
+        /*
+         * Decline analytics.
+         */
+
+        denyButton.addEventListener(
+            "click",
+            function () {
+
+                localStorage.setItem(
+                    "analytics-consent",
+                    "declined"
+                );
+
+                redirectToDiscord();
+            }
+        );
+
+
+        /*
+         * If the visitor has already made
+         * a choice, don't show the banner again.
+         */
+
+        const savedConsent =
+            localStorage.getItem(
+                "analytics-consent"
+            );
+
+
+        if (savedConsent === "accepted") {
+
+            enableAnalytics();
+
+            redirectToDiscord();
+
+        } else if (savedConsent === "declined") {
+
+            redirectToDiscord();
+
+        }
+
+    </script>
+
 </body>
+
 </html>
