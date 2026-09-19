@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Clanker ~ Credits</title>
+
+<meta
+    name="description"
+    content="The people, projects and services that helped make Clanker."
+>
+
+<link rel="icon" href="/assets/clanker.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="/static/styles.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+
+<a class="logo" href="/">
+    Clan<span>ker</span>
+</a>
+
+<div class="nav-links">
+
+    <a href="/commands/">
+        Commands
+    </a>
+
+    <a href="/contributors/">
+        Credits
+    </a>
+
+    <a href="/legal/">
+        Legal
+    </a>
+
+    <a href="/credits/">
+            Credits
+    </a>
+
+    <a
+        href="https://pxsl.dev/discord/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Community
+    </a>
+
+</div>
+
+</nav>
+
+<section class="credits-hero">
+
+<div class="badge">
+    ❤️ Made with a lot of questionable decisions
+</div>
+
+<h1>
+    The people behind
+    <span>Clanker.</span>
+</h1>
+
+<p>
+    Clanker is built, improved and kept alive by a bunch of
+    people who decided this was somehow a good idea.
+</p>
+
+</section>
+
+<section class="credits-section">
+
+<div class="credits-heading">
+
+    <span>
+        THE CREATOR
+    </span>
+
+    <h2>
+        Built from the ground up.
+    </h2>
+
+    <p>
+        The person responsible for most of the code,
+        ideas, questionable decisions and keeping Clanker alive.
+    </p>
+
+</div>
+
+<div class="credits-feature-card" id="creator">
+
+    <img
+        src="/assets/clanker.png"
+        alt="Creator"
+        class="credits-avatar large"
+    >
+
+    <div class="credits-person">
+
+        <div class="credits-name">
+            Loading...
+        </div>
+
+        <div class="credits-role">
+            Loading...
+        </div>
+
+        <p>
+            Loading...
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<section class="credits-section">
+
+<div class="credits-heading">
+
+    <span>
+        CONTRIBUTORS
+    </span>
+
+    <h2>
+        People who helped build it.
+    </h2>
+
+    <p>
+        Developers and contributors who have helped improve
+        Clanker through code, features and fixes.
+    </p>
+
+</div>
+
+<div class="credits-grid" id="contributors"></div>
+
+</section>
+
+<section class="credits-section">
+
+<div class="credits-heading">
+
+    <span>
+        SPECIAL THANKS
+    </span>
+
+    <h2>
+        You helped too.
+    </h2>
+
+    <p>
+        People who have helped with ideas, testing, feedback,
+        bug reports, suggestions or just generally making Clanker better.
+    </p>
+
+</div>
+
+<div class="credits-grid" id="special-thanks"></div>
+
+</section>
+
+<section class="credits-section">
+
+<div class="credits-heading">
+
+    <span>
+        POWERED BY
+    </span>
+
+    <h2>
+        A lot of other stuff.
+    </h2>
+
+    <p>
+        Clanker wouldn't work without the tools, libraries
+        and services it is built on.
+    </p>
+
+</div>
+
+<div class="powered-grid" id="powered-by"></div>
+
+</section>
+
+<section class="credits-final">
+
+<h2>
+    Thanks for being here.
+</h2>
+
+<p>
+    Whether you contributed code, reported a bug,
+    suggested a feature or simply used Clanker,
+    you're part of the story.
+</p>
+
+<a
+    class="btn primary"
+    href="/"
+>
+    Back to Clanker →
+</a>
+
+</section>
+
+<footer>
+
+<p>
+    © 2026 Clanker Bot • Built by Pxsl
+</p>
+
+</footer>
+
+<script>
+
+async function loadCredits() {
+
+    try {
+
+        const response = await fetch("/credits.json");
+
+        if (!response.ok) {
+            throw new Error("Failed to load credits.json");
+        }
+
+        const data = await response.json();
+
+        const creator = document.getElementById("creator");
+
+        creator.innerHTML = `
+            <img
+                src="${data.creator.avatar}"
+                alt="${data.creator.name}"
+                class="credits-avatar large"
+            >
+
+            <div class="credits-person">
+
+                <div class="credits-name">
+                    ${data.creator.name}
+                </div>
+
+                <div class="credits-role">
+                    ${data.creator.role}
+                </div>
+
+                <p>
+                    ${data.creator.description}
+                </p>
+
+            </div>
+        `;
+
+        const contributors = document.getElementById("contributors");
+
+        contributors.innerHTML = data.contributors.map(person => `
+            <div class="credits-card">
+
+                <img
+                    src="${person.avatar}"
+                    alt="${person.name}"
+                    class="credits-avatar"
+                >
+
+                <div>
+
+                    <h3>
+                        ${person.name}
+                    </h3>
+
+                    <p>
+                        ${person.role}
+                    </p>
+
+                </div>
+
+            </div>
+        `).join("");
+
+        const specialThanks = document.getElementById("special-thanks");
+
+        specialThanks.innerHTML = data.special_thanks.map(person => `
+            <div class="credits-card">
+
+                <img
+                    src="${person.avatar}"
+                    alt="${person.name}"
+                    class="credits-avatar"
+                >
+
+                <div>
+
+                    <h3>
+                        ${person.name}
+                    </h3>
+
+                    <p>
+                        ${person.role}
+                    </p>
+
+                </div>
+
+            </div>
+        `).join("");
+
+        const poweredBy = document.getElementById("powered-by");
+
+        poweredBy.innerHTML = data.powered_by.map(item => `
+            <div class="powered-card">
+
+                <div class="powered-icon">
+                    ${item.icon}
+                </div>
+
+                <div>
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <p>
+                        ${item.description}
+                    </p>
+
+                </div>
+
+            </div>
+        `).join("");
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+loadCredits();
+
+</script>
+
+</body>
+</html>

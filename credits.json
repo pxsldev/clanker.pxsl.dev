@@ -1,172 +1,64 @@
 {
-    "developers": {
-        "title": "🤖 Development Team",
-        "people": [
-            {
-                "name": "Pxsl",
-                "role": "Lead Developer & Creator of Clanker"
-            }
-        ]
+    "creator": {
+        "name": "Pxsl",
+        "role": "Creator & Developer",
+        "avatar": "https://cdn.discordapp.com/avatars/994116541559865416/2089aa6199e3b618263f64200112ba81.png?size=1024",
+        "description": "Creator of Clanker and the person responsible for building and maintaining the bot."
     },
-
-    "contributors": {
-        "title": "🛠️ Contributors",
-        "people": [
-            {
-                "name": "dash",
-                "role": "Early development support and testing. A major part of Clanker's beginnings ❤️"
-            },
-            {
-                "name": "speedar435",
-                "role": "Created Clanker's logo and banner assets"
-            },
-            {
-                "name": "music.mash",
-                "role": "Created branding assets for Crumb"
-            },
-            {
-                "name": "hatchson",
-                "role": "Helped with development of Crumb"
-            }
-        ]
-    },
-
-    "testers": {
-        "title": "🧪 Testers",
-        "people": [
-            {
-                "name": "dash",
-                "role": "Early tester who helped test features during Clanker's creation"
-            },
-            {
-                "name": "lucataru",
-                "role": "Community moderator and active tester"
-            },
-            {
-                "name": "OmegaRecord",
-                "role": "Helped test Clanker during development"
-            },
-            {
-                "name": "flapbirdMC",
-                "role": "One of Clanker's first testers"
-            },
-            {
-                "name": "DeadCourt",
-                "role": "Long-time community member and early tester"
-            },
-            {
-                "name": "SexySalad",
-                "role": "Helped test Clanker"
-            },
-            {
-                "name": "Satu",
-                "role": "Helped test Clanker"
-            },
-            {
-                "name": "jahndoe318",
-                "role": "Active community member and tester"
-            }
-        ]
-    },
-
-    "assets": {
-        "title": "🎨 Assets & Design",
-        "people": [
-            {
-                "name": "Pxsl",
-                "role": "Branding, website, UI design, and bot visuals"
-            },
-            {
-                "name": "speedar435",
-                "role": "Creator of Clanker's logo and banner"
-            },
-            {
-                "name": "music.mash",
-                "role": "Creator of Crumb's logo and banner"
-            }
-        ]
-    },
-
-    "suggestions": {
-        "title": "💡 Suggestion Contributors",
-        "people": [
-            {
-                "name": "Official Clanker Discord Community",
-                "role": "Members who have submitted ideas, feedback, and feature suggestions"
-            },
-            {
-                "name": "achopisatblya",
-                "role": "Provided multiple feature ideas for Clanker"
-            },
-            {
-                "name": "dash",
-                "role": "Provided ideas and helped shape Clanker's early development"
-            }
-        ]
-    },
-
-    "supporters": {
-        "title": "💖 Supporters",
-        "people": []
-    },
-
-    "server_team": {
-        "title": "🛡️ Official Server Team",
-        "people": [
-            {
-                "name": "Pxsl",
-                "role": "Server Owner"
-            },
-            {
-                "name": "dash",
-                "role": "Co-Owner"
-            },
-            {
-                "name": "lucataru",
-                "role": "Moderator"
-            },
-            {
-                "name": "hatchson",
-                "role": "Moderator"
-            },
-            {
-                "name": "Penny2819",
-                "role": "Moderator"
-            },
-            {
-                "name": "SRWB2010",
-                "role": "Moderator"
-            },
-            {
-                "name": "achopisatblya",
-                "role": "Moderator"
-            }
-        ]
-    },
-
-    "special_thanks": {
-        "title": "⭐ Special Thanks",
-        "people": [
-            {
-                "name": "The Clanker Community",
-                "role": "Thank you to everyone who has used, supported, and helped Clanker grow ❤️"
-            },
-            {
-                "name": "dash",
-                "role": "A close friend and one of the biggest influences behind Clanker. Her early support, ideas, testing, and encouragement helped shape Clanker from the beginning. Without her, Clanker would likely not exist today ❤️"
-            },
-            {
-              "name": "Menkerr",
-              "role": "Trusting in Clanker early on, and adding it to his 8k member discord server"
-            },
-            {
-              "name": "Cheemz",
-              "role": "Trusting in Clanker early on"
-            },
-            {
-              "name": "Thugsnugz",
-              "role": "always knowing how to make the community smile"
-            }
-        ]
-    }
+    "contributors": [
+        {
+            "name": "Hatchson",
+            "role": "Code Contributions",
+            "avatar": "https://cdn.discordapp.com/avatars/1247173440780370035/0d98badee5c3a35b76ed606484ca87ec.png?size=1024"
+        },
+        {
+            "name": "eautopian",
+            "role": "Code Contributions",
+            "avatar": "https://cdn.discordapp.com/avatars/1536229453649285140/d28a10f1ceb813729ae5dcd12cfb4390.png?size=1024"
+        },
+        {
+            "name": "speedar435",
+            "role": "Created Clanker's Logo & Banner",
+            "avatar": "https://cdn.discordapp.com/avatars/924713854347403265/acbe5dc44b2ee8a22c603ea8e048823f.png?size=1024"
+        },
+        {
+            "name": "jahndoe318",
+            "role": "Created Community Logo",
+            "avatar": "https://cdn.discordapp.com/avatars/1310453979582562328/833701dd19355558259187127bd82c71.png?size=1024"
+        }
+    ],
+    "special_thanks": [
+        {
+            "name": "Dash",
+            "role": "Clanker wouldn't exist without you :)",
+            "avatar": "https://cdn.discordapp.com/avatars/1033895617505788015/42930963ee71d0b061ee3e41b4d4b2b2.png?size=1024"
+        },
+        {
+            "name": "Acho 🤧",
+            "role": "Ideas & Suggestions",
+            "avatar": "/assets/clanker.png"
+        }
+    ],
+    "powered_by": [
+        {
+            "name": "Python",
+            "description": "The language Clanker is built with.",
+            "icon": "🐍"
+        },
+        {
+            "name": "Discord",
+            "description": "Where Clanker lives.",
+            "icon": "🤖"
+        },
+        {
+            "name": "GitHub",
+            "description": "Where the source code lives.",
+            "icon": "🐙"
+        },
+        {
+            "name": "dashcrikeydash.github.io",
+            "description": "Where /utilities 1 oliver gets it's images from",
+            "icon": "🐈"
+        }
+    ]
 }
