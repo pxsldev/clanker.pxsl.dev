@@ -36,7 +36,7 @@
         {
             "name": "Acho 🤧",
             "role": "Ideas & Suggestions",
-            "avatar": "/assets/clanker.png"
+            "avatar": "https://cdn.discordapp.com/avatars/1246510881307885651/82ca2c518f37f26a299e081f939b66e0.png?size=1024"
         }
     ],
     "powered_by": [
@@ -56,7 +56,7 @@
             "icon": "🐙"
         },
         {
-            "name": "dashcrikeydash.github.io",
+            "name": "Oliver API",
             "description": "Where /utilities 1 oliver gets it's images from",
             "icon": "🐈"
         }
