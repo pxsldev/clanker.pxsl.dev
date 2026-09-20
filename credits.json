@@ -67,7 +67,7 @@
         },
         {
             "name": "Popcat API",
-            "description": "Provides various APIs used by Clanker for fun and image generation features.",
+            "description": "Provides various APIs used by Clanker for platform related features.",
             "icon": "🐱"
         }
     ]
