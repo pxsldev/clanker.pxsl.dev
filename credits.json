@@ -37,6 +37,11 @@
             "name": "Acho 🤧",
             "role": "Ideas & Suggestions",
             "avatar": "https://cdn.discordapp.com/avatars/1246510881307885651/82ca2c518f37f26a299e081f939b66e0.png?size=1024"
+        },
+        {
+            "name": "lucataru",
+            "role": "For testing Clanker A LOT, suggesting LOADS of features, helping the bot improve, introducing Clanker to some massive communities right from the start, and being the community's favourite furry 😭✌🏻",
+            "avatar": "https://cdn.discordapp.com/avatars/727223588473667664/6314c45758433a70b756d766cede73af.png?size=4096&ignore=true"
         }
     ],
     "powered_by": [
@@ -59,6 +64,11 @@
             "name": "Oliver API",
             "description": "Where /utilities 1 oliver gets it's images from",
             "icon": "🐈"
+        },
+        {
+            "name": "Popcat API",
+            "description": "Provides various APIs used by Clanker for fun and image generation features.",
+            "icon": "🐱"
         }
     ]
 }
