@@ -29,7 +29,7 @@
                 },
                 {
                     "type": 10,
-                    "content": "## **100% Free**\nNo premium walls. No locked commands. Just Clanker."
+                    "content": "## **100% free • Always**\nNo premium walls. No locked commands. Just Clanker."
                 },
                 {
                     "type": 1,
@@ -333,10 +333,348 @@
 
     </style>
 
+    <style>
+        .support-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99998;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.72);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+
+        .support-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .support-modal {
+            position: relative;
+
+            width: min(520px, 100%);
+
+            padding: 34px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(30, 30, 48, 0.98),
+                    rgba(17, 17, 31, 0.98)
+                );
+
+            border: 1px solid rgba(88, 101, 242, 0.35);
+            border-radius: 24px;
+
+            box-shadow:
+                0 30px 100px rgba(0, 0, 0, 0.65),
+                0 0 60px rgba(88, 101, 242, 0.12);
+
+            transform: translateY(20px) scale(0.97);
+
+            transition:
+                transform 0.4s cubic-bezier(.16, 1, .3, 1);
+        }
+
+
+        .support-overlay.show .support-modal {
+            transform: translateY(0) scale(1);
+        }
+
+
+        .support-close {
+            position: absolute;
+
+            top: 16px;
+            right: 16px;
+
+            width: 34px;
+            height: 34px;
+
+            border: 0;
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.6);
+
+            font-size: 20px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .support-close:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+
+        .support-icon {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            background: rgba(88, 101, 242, 0.14);
+
+            border: 1px solid rgba(88, 101, 242, 0.3);
+
+            border-radius: 16px;
+
+            font-size: 28px;
+        }
+
+
+        .support-modal h2 {
+            margin: 0 40px 12px 0;
+
+            color: #fff;
+
+            font-size: clamp(25px, 5vw, 32px);
+            font-weight: 900;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        .support-modal h2 span {
+            color: #7289ff;
+        }
+
+
+        .support-modal > p {
+            margin: 0 0 22px;
+
+            color: rgba(255, 255, 255, 0.68);
+
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+
+        .support-reasons {
+            display: grid;
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .support-reason {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 11px;
+
+            padding: 12px 14px;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
+            border-radius: 13px;
+        }
+
+
+        .support-reason span {
+            font-size: 17px;
+        }
+
+
+        .support-reason p {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.72);
+
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+
+        .support-reason strong {
+            color: #fff;
+        }
+
+
+        .support-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            padding: 14px 20px;
+
+            border-radius: 12px;
+
+            background: #5865F2;
+            color: #fff;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            text-decoration: none;
+
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.25);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .support-button:hover {
+            transform: translateY(-2px);
+
+            background: #6875ff;
+
+            box-shadow: 0 12px 30px rgba(88, 101, 242, 0.35);
+        }
+
+
+        .support-secondary {
+            margin: 13px 0 0;
+
+            color: rgba(255, 255, 255, 0.4);
+
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .support-modal {
+                padding: 27px 22px;
+                border-radius: 20px;
+            }
+
+            .support-modal h2 {
+                font-size: 25px;
+            }
+
+        }
+    </style>
+
 </head>
 
 
 <body>
+
+<div
+    id="supportOverlay"
+    class="support-overlay"
+>
+    <div class="support-modal">
+
+        <button
+            id="supportClose"
+            class="support-close"
+            type="button"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <div class="support-icon">
+            💜
+        </div>
+
+
+        <h2>
+            Help keep <span>Clanker</span> free.
+        </h2>
+
+
+        <p>
+            Clanker is completely free, with no premium walls,
+            locked commands, or subscriptions. If you've enjoyed
+            using it, you can support me directly and help keep
+            the bot running, maintained, and growing.
+        </p>
+
+
+        <div class="support-reasons">
+
+            <div class="support-reason">
+                <span>💰</span>
+
+                <p>
+                    <strong>Support me directly</strong><br>
+                    Your support helps cover hosting, APIs and
+                    the costs of keeping Clanker online.
+                </p>
+            </div>
+
+
+            <div class="support-reason">
+                <span>🚀</span>
+
+                <p>
+                    <strong>Boost the community</strong><br>
+                    Boost the Clanker Discord server to support
+                    the community and get access to server perks.
+                </p>
+            </div>
+
+
+            <div class="support-reason">
+                <span>🆓</span>
+
+                <p>
+                    <strong>Keep it free</strong><br>
+                    Supporting Clanker helps me keep features
+                    available to everyone without paywalls.
+                </p>
+            </div>
+
+        </div>
+
+
+        <a
+            class="support-button"
+            href="https://pxsl.dev/thanks/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            💜 Support Clanker &amp; Pxsl →
+        </a>
+
+
+        <p class="support-secondary">
+            Every bit of support genuinely helps. Thank you ❤️
+        </p>
+
+    </div>
+</div>
 
 
 <div class="background"></div>
@@ -937,6 +1275,51 @@
 
 
 <script>
+        const supportOverlay =
+            document.getElementById("supportOverlay");
+
+        const supportClose =
+            document.getElementById("supportClose");
+
+
+        function showSupportPopup() {
+
+            supportOverlay.classList.add("show");
+
+        }
+
+
+        function hideSupportPopup() {
+
+            supportOverlay.classList.remove("show");
+
+        }
+
+
+        supportClose.addEventListener(
+            "click",
+            hideSupportPopup
+        );
+
+
+        supportOverlay.addEventListener(
+            "click",
+            (event) => {
+
+                if (event.target === supportOverlay) {
+
+                    hideSupportPopup();
+
+                }
+
+            }
+        );
+
+
+        setTimeout(
+            showSupportPopup,
+            500
+        );
 
     async function loadStats() {
 
