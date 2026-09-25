@@ -937,52 +937,6 @@
 
 
 <script>
-        const supportOverlay =
-            document.getElementById("supportOverlay");
-
-        const supportClose =
-            document.getElementById("supportClose");
-
-
-        function showSupportPopup() {
-
-            supportOverlay.classList.add("show");
-
-        }
-
-
-        function hideSupportPopup() {
-
-            supportOverlay.classList.remove("show");
-
-        }
-
-
-        supportClose.addEventListener(
-            "click",
-            hideSupportPopup
-        );
-
-
-        supportOverlay.addEventListener(
-            "click",
-            (event) => {
-
-                if (event.target === supportOverlay) {
-
-                    hideSupportPopup();
-
-                }
-
-            }
-        );
-
-
-        setTimeout(
-            showSupportPopup,
-            500
-        );
-
     async function loadStats() {
 
         try {
